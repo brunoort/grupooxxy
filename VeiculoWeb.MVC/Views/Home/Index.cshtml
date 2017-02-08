@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Lista de Veículos</h2> cadastrados no sistema
+
+        <div class="col-md-12" ng-controller="getClienteCtrl" ng-cloak>
+            <div class="table-responsive">
+                <br />
+                <table ng-show="divDetail" ng-init="divClientes=false">
+                    <tr>
+                        <td>Id: </td>
+                        <td>{{ detalhes.Id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nome: </td>
+                        <td>{{ detalhes.Nome }}</td>
+                    </tr>
+                    <tr>
+                        <td>CPF: </td>
+                        <td> {{ detalhes.CPF }}</td>
+                    </tr>
+                    <tr>
+                        <td>Placa: </td>
+                        <td> {{ detalhes.Placa }}</>
+                    </tr>
+                    <tr>
+                        <td>Renavam: </td>
+                        <td> {{ detalhes.Renavam }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bloqueado: </td>
+                        <td> {{ detalhes.Bloqueado }}</td>
+                    </tr>
+                    <tr>
+                        <td>Imagens: </td>
+                        <td>{{ detalhes.Blqqueado }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div ng-repeat="Imagem in detalhes.Imagens" style="display:inline-table">
+                                <img class="img-rounded imgDetail" src="/Images/{{ Imagem}}" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div>
+                                <a href="" ng-click="closeDetails();">
+                                    <b>Voltar</b>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table ng-show="divClientes" ng-init="divClientes=true" class="table table-bordered table-hover" style="width:800px" ng-cloak>
+                    <tr>
+                        <th>#</th>
+                        <td>Nome</td>
+                        <th>CPF</th>
+                        <th>Placa</th>
+                        <th>Renavam</th>
+                        <th>Bloqueado</th>
+                        <th>Detalhes</th>
+                    </tr>
+                    <tr data-ng-repeat="cliente in clientes">
+                        <td><strong data-ng-hide="cliente.editMode">{{ cliente.Id }}</strong></td>
+                        <td>
+                            <p data-ng-hide="cliente.editMode">{{ cliente.Nome }}</p>
+                            <input data-ng-show="cliente.editMode" type="text" data-ng-model="cliente.Name" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="cliente.editMode">{{ cliente.CPF }}</p>
+                            <input data-ng-show="cliente.editMode" type="text" data-ng-model="cliente.Address" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="cliente.editMode">{{ cliente.Placa }}</p>
+                            <input data-ng-show="cliente.editMode" type="text" data-ng-model="cliente.City" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="cliente.editMode">{{ cliente.Renavam }}</p>
+                            <input data-ng-show="cliente.editMode" type="text" data-ng-model="cliente.Country" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="cliente.editMode">{{cliente.Bloqueado == true && 'Sim' || 'Não'}}</p>
+                        </td>
+                        <td>
+                            <a href="" ng-click="openDetails(cliente);divClientes = !divClientes">
+                                <i class="fa fa-user" style="width:40px" align="center"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <hr />
+            </div>
+        </div>
+
+    </div>
+
+</div>

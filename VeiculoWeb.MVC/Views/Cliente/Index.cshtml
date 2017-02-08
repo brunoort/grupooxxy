@@ -1,0 +1,61 @@
+﻿@*<h4>Cadastro de Veiculos</h4>*@
+
+<div class="container" ng-controller="formController" ng-cloak>
+    <form name="formulario" style="width:600px;margin:0px auto;" enctype="multipart/form-data" class="ng-cloak">
+
+        <div class="form-group">
+            <label for="nome" class="col-sm-2 control-label">Nome:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cnome" placeholder="Digite seu nome" data-ng-model="novocliente.Nome" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="renavam" class="col-sm-2 control-label">Renavam:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="crenavam" placeholder="Digite o renevam" data-ng-model="novocliente.Renavam" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="placa" class="col-sm-2 control-label">Placa:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cplaca" placeholder="Digite a placa" data-ng-model="novocliente.Placa" required />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="cpf" class="col-sm-2 control-label">CPF:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="ccpf" placeholder="Digite o CPF" data-ng-model="novocliente.CPF" required />
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <label for="imagens" class="col-sm-2 control-label">Imagens:</label>
+            <div class="col-sm-10">
+                <input type="file" id="file" class="form-control" name="file" multiple onchange="angular.element(this).scope().getFileDetails(this)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cpf" class="col-sm-2 control-label">Bloqueado:</label>
+            <div class="col-sm-10">
+                <input type="checkbox"  data-ng-model="novocliente.Bloqueado" style="margin-left:-0px;width:20px;height:20px;"  /> 
+            </div>
+        </div>
+        
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Cadastrar" data-ng-click="AddCadastro()" data-ng-disabled="!formulario.$valid" class="btn btn-primary" />
+                <button id="resetBtn" type="reset" class="btn btn-primary" ng-click="formulario.$setPristine()">Limpar dados</button>                
+                
+            </div>
+        </div>
+        <br />
+    </form>
+</div>
+
